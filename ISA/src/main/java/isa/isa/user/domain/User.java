@@ -33,7 +33,8 @@ public class User {
     @Column
     private Gender gender;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="address", nullable = false)
     private Address address;
 
     @Column
@@ -70,13 +71,7 @@ public class User {
         this.role = role;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -134,13 +129,7 @@ public class User {
         this.gender = gender;
     }
 
-    public Address getAddress() {
-        return address;
-    }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     public String getProfession() {
         return profession;

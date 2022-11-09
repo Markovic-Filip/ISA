@@ -1,6 +1,9 @@
 package isa.isa.user.domain;
 
+import isa.isa.bloodTransfusionCenter.domain.Center;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Address {
@@ -14,16 +17,23 @@ public class Address {
     @Column
     private String number;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="city_id", nullable = false)
     private City city;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "address")
+    private List<User> user;
+
+    @OneToOne(targetEntity=Center.class)
+    private Center center;
 
     public Address(){}
 
-    public Address(Long id, String street, String number, City city) {
+    public Address(Long id, String street, String number/*, City city*/) {
         this.id = id;
         this.street = street;
         this.number = number;
-        this.city = city;
+        //this.city = city;
     }
 
     public String getStreet() {
@@ -42,20 +52,13 @@ public class Address {
         this.number = number;
     }
 
-    public City getCity() {
+   /* public City getCity() {
         return city;
     }
 
     public void setCity(City city) {
         this.city = city;
-    }
+    }*/
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    @Id
-    public Long getId() {
-        return id;
-    }
 }
