@@ -1,14 +1,17 @@
 package isa.isa.bloodTransfusionCenter.domain;
 
+import isa.isa.appointment.domain.Report;
 import isa.isa.user.domain.Address;
 import isa.isa.user.domain.Country;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Equipment {
+    @Column(name="equipment_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,8 +22,8 @@ public class Equipment {
     @Column
     private String name;
 
-    /*@ManyToOne(fetch = FetchType.EAGER, optional = false)
-    private Warehouse warehouse;*/
+    @ManyToMany(mappedBy = "equipment")
+    private List<Report> report = new ArrayList<>();
 
 
     public Equipment(){}

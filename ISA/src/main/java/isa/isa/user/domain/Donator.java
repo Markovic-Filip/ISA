@@ -1,13 +1,31 @@
 package isa.isa.user.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import isa.isa.appointment.domain.Appointment;
+import isa.isa.appointment.domain.Report;
+import isa.isa.donator.domain.HistoryOfAppointments;
+import isa.isa.donator.domain.Questionnaire;
+import isa.isa.evaulation.domain.Grade;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Donator extends User{
 
     @Column
     private int penaltys;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "donator")
+    private List<Grade> grade;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "donator")
+    private List<Appointment> appointment;
+
+    @OneToOne(targetEntity = Questionnaire.class)
+    private Questionnaire questionnaire;
+
+    @OneToOne(targetEntity=HistoryOfAppointments.class)
+    private HistoryOfAppointments historyOfAppointments;
 
     public Donator() {
     }
