@@ -16,4 +16,12 @@ public class Questionnaire {
     //pitanja razna idk
 
     public Questionnaire(){}
+
+    public Donator getDonator() {
+        return donator;
+    }
+
+    public void setDonator(Donator donator) {
+        this.donator = donator;
+    }
 }

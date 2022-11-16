@@ -7,4 +7,6 @@ import isa.isa.user.domain.Role;
 public interface RoleService {
 	Role findById(Long id);
 	List<Role> findByName(String name);
+
+
 }
