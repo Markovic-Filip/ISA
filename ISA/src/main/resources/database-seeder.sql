@@ -14,5 +14,12 @@ INSERT INTO city(id, name, zip_code, country_id) VALUES (1, 'Novi Sad', '21000',
 
 --address
 INSERT INTO address(id, number, street, city_id) VALUES (1, '40', 'Narodnog fronta', 1);
+INSERT INTO address(id, number, street, city_id) VALUES (2, '56', '1300 kaplara', 1);
+
+--center
+INSERT INTO center(id, description, name, address_id) VALUES (1, 'Ovo je glavni centar za transfuziju', 'Glavni centar za transfuziju', 1);
+INSERT INTO center(id, description, name, address_id) VALUES (2, 'Ovo je sporedni centar za transfuziju', 'Sporedni centar za transfuziju', 2);
+
+
 
 

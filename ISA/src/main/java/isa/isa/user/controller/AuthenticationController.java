@@ -2,6 +2,11 @@ package isa.isa.user.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import isa.isa.bloodTransfusionCenter.domain.Center;
+import isa.isa.bloodTransfusionCenter.dto.CenterDTO;
+import isa.isa.bloodTransfusionCenter.mapper.CenterMapper;
+import isa.isa.user.domain.Address;
+import isa.isa.user.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,10 +15,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import isa.isa.user.dto.JwtAuthenticationRequest;
@@ -23,6 +25,8 @@ import isa.isa.user.exception.ResourceConflictException;
 import isa.isa.user.domain.User;
 import isa.isa.user.service.UserService;
 import isa.isa.user.util.TokenUtils;
+
+import java.util.List;
 
 //Kontroler zaduzen za autentifikaciju korisnika
 @RestController
@@ -37,6 +41,9 @@ public class AuthenticationController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private AddressService addressService;
 	
 	// Prvi endpoint koji pogadja korisnik kada se loguje.
 	// Tada zna samo svoje korisnicko ime i lozinku i to prosledjuje na backend.
@@ -80,4 +87,5 @@ public class AuthenticationController {
 
 		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
+
 }

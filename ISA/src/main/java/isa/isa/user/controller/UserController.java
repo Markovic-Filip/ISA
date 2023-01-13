@@ -53,4 +53,11 @@ public class UserController {
         fooObj.put("foo", "bar");
         return fooObj;
     }
+
+	@GetMapping("/penalty")
+	public int penalty(){
+		return 0;
+	}
+
+
 }

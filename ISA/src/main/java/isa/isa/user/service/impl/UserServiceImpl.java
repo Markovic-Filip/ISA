@@ -3,7 +3,9 @@ package isa.isa.user.service.impl;
 import java.util.List;
 
 import isa.isa.user.domain.Address;
+import isa.isa.user.domain.Donator;
 import isa.isa.user.domain.enumeration.Gender;
+import isa.isa.user.repository.DonatorRepository;
 import isa.isa.user.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -23,6 +25,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private DonatorRepository donatorRepository;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -50,6 +55,7 @@ public class UserServiceImpl implements UserService {
 	public List<User> findAll() throws AccessDeniedException {
 		return userRepository.findAll();
 	}
+
 
 	@Override
 	public User save(UserRequest userRequest) {
@@ -85,6 +91,14 @@ public class UserServiceImpl implements UserService {
 		u.setRoles(roles);
 		
 		return this.userRepository.save(u);
+	}
+
+	@Override
+	public int penaltys(Long id) {
+		Donator d = donatorRepository.getById(id);
+		int penalty = d.getPenaltys();
+
+		return penalty;
 	}
 
 }

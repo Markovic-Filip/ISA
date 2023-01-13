@@ -52,13 +52,13 @@ public class Address {
         this.number = number;
     }
 
-   /* public City getCity() {
+    public City getCity() {
         return city;
     }
 
     public void setCity(City city) {
         this.city = city;
-    }*/
+    }
 
 
 }
