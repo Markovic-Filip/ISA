@@ -5,11 +5,13 @@ import isa.isa.appointment.domain.Report;
 import isa.isa.donator.domain.HistoryOfAppointments;
 import isa.isa.donator.domain.Questionnaire;
 import isa.isa.evaulation.domain.Grade;
+import isa.isa.user.domain.enumeration.Roles;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@DiscriminatorValue(value = Roles.Values.Donator)
 public class Donator extends User{
 
     @Column

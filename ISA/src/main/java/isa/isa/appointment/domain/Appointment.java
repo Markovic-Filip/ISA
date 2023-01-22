@@ -1,5 +1,6 @@
 package isa.isa.appointment.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import isa.isa.appointment.domain.enumeration.AppointmentState;
 import isa.isa.bloodTransfusionCenter.domain.Warehouse;
 import isa.isa.user.domain.CenterAdministrator;
@@ -30,11 +31,65 @@ public class Appointment {
     })
     private TimePeriod timePeriod;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name="donator_id", nullable = false)
     private Donator donator;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name="medical_staff_id", nullable = false)
     private CenterAdministrator medicalStaff;
+
+    public Appointment(AppointmentState appointmentState, List<Report> report, TimePeriod timePeriod, Donator donator, CenterAdministrator medicalStaff) {
+        this.appointmentState = appointmentState;
+        this.report = report;
+        this.timePeriod = timePeriod;
+        this.donator = donator;
+        this.medicalStaff = medicalStaff;
+    }
+
+    public Appointment() {
+
+    }
+
+    public AppointmentState getAppointmentState() {
+        return appointmentState;
+    }
+
+    public void setAppointmentState(AppointmentState appointmentState) {
+        this.appointmentState = appointmentState;
+    }
+
+    public List<Report> getReport() {
+        return report;
+    }
+
+    public void setReport(List<Report> report) {
+        this.report = report;
+    }
+
+    public TimePeriod getTimePeriod() {
+        return timePeriod;
+    }
+
+    public void setTimePeriod(TimePeriod timePeriod) {
+        this.timePeriod = timePeriod;
+    }
+
+    public Donator getDonator() {
+        return donator;
+    }
+
+    public void setDonator(Donator donator) {
+        this.donator = donator;
+    }
+
+    public CenterAdministrator getMedicalStaff() {
+        return medicalStaff;
+    }
+
+    public void setMedicalStaff(CenterAdministrator medicalStaff) {
+        this.medicalStaff = medicalStaff;
+    }
 }

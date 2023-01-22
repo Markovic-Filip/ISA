@@ -1,6 +1,7 @@
 package isa.isa.user.domain;
 
 import isa.isa.user.domain.enumeration.Gender;
+import isa.isa.user.domain.enumeration.Roles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,6 +11,8 @@ import java.util.List;
 
 @Entity
 @Table(name="users")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "role", discriminatorType=DiscriminatorType.STRING)
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,6 +58,9 @@ public class User implements UserDetails {
     @Column
     private Boolean passwordChanged;
 
+    @Column
+    private String role;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -63,7 +69,7 @@ public class User implements UserDetails {
 
     public User(){}
 
-    public User(Long id, String name, String surname, String email, String password, String phoneNumber, String jmbg, Gender gender, Address address, String profession, String company, Boolean activated, Boolean passwordChanged) {
+    public User(Long id, String name, String surname, String email, String password, String phoneNumber, String jmbg, Gender gender, Address address, String profession, String company, Boolean activated, Boolean passwordChanged, String role) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -77,6 +83,7 @@ public class User implements UserDetails {
         this.company = company;
         this.activated = activated;
         this.passwordChanged = passwordChanged;
+        this.role = role;
     }
 
 
@@ -228,4 +235,11 @@ public class User implements UserDetails {
         this.passwordChanged = passwordChanged;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
