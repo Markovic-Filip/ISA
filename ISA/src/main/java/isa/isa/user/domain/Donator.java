@@ -1,11 +1,10 @@
 package isa.isa.user.domain;
 
 import isa.isa.appointment.domain.Appointment;
-import isa.isa.appointment.domain.Report;
+import isa.isa.user.domain.enumeration.Roles;
 import isa.isa.donator.domain.HistoryOfAppointments;
 import isa.isa.donator.domain.Questionnaire;
 import isa.isa.evaulation.domain.Grade;
-import isa.isa.user.domain.enumeration.Roles;
 
 import javax.persistence.*;
 import java.util.List;

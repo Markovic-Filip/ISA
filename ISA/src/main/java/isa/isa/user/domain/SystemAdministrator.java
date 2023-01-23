@@ -1,7 +1,6 @@
 package isa.isa.user.domain;
 
 import isa.isa.appointment.domain.Appointment;
-import isa.isa.appointment.domain.Report;
 import isa.isa.user.domain.enumeration.Roles;
 
 import javax.persistence.*;

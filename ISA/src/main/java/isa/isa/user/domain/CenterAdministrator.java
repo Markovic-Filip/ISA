@@ -14,4 +14,12 @@ public class CenterAdministrator extends User{
     private Center center;
 
     public CenterAdministrator() {}
+
+    public Center getCenter() {
+        return center;
+    }
+
+    public void setCenter(Center center) {
+        this.center = center;
+    }
 }

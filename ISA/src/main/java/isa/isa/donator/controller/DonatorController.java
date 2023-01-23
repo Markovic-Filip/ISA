@@ -1,9 +1,15 @@
 package isa.isa.donator.controller;
 
+import com.google.zxing.NotFoundException;
+import com.google.zxing.WriterException;
+import isa.isa.QRCode.email.EmailService;
 import isa.isa.appointment.domain.Appointment;
+import isa.isa.appointment.dto.QRAppointmentDTO;
 import isa.isa.appointment.service.AppointmentService;
 import isa.isa.donator.domain.Questionnaire;
+import isa.isa.donator.dto.HistorySuccessfulDTO;
 import isa.isa.donator.dto.QuestionnaireDTO;
+import isa.isa.donator.service.HistoryService;
 import isa.isa.donator.service.QuestionnaireService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +18,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -24,6 +32,10 @@ public class DonatorController {
 
     @Autowired
     private AppointmentService appointmentService;
+    @Autowired
+    private EmailService emailService;
+    @Autowired
+    private HistoryService historyService;
 
     @GetMapping("/scheduled")
     public ResponseEntity<?> loadAll() {
@@ -46,4 +58,38 @@ public class DonatorController {
 
         return new ResponseEntity<>(questionnaire, HttpStatus.CREATED);
     }
+
+    @PostMapping(value = "/scheduleAppointment", consumes =  MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> scheduleAppointment(@RequestBody Long appointmentId) throws MessagingException, NotFoundException, IOException, WriterException {
+        Long donatorId = 1L;
+        this.appointmentService.scheduleAppointment(appointmentId,donatorId);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/cancelAppointment", consumes =  MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> cancelPatient(@RequestBody Long appointmentId) throws MessagingException, NotFoundException, IOException, WriterException {
+        Long donatorId = 1L;
+        this.appointmentService.cancelAppointment(appointmentId,donatorId);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/qrAppointments")
+    public ResponseEntity<?> getQRAppointments(){
+        //dodaj id donatora
+        List<QRAppointmentDTO> appointmentDTOS = appointmentService.getQRAppointments(1L);
+
+        return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping("/History")
+    public ResponseEntity<?> getHistory(){
+        //dodaj id donatora
+
+        List<HistorySuccessfulDTO> historySuccessfulDTOS = historyService.getHistory(1L);
+
+        return new ResponseEntity<>(historySuccessfulDTOS, HttpStatus.OK);
+    }
+
+
 }

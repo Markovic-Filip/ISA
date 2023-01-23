@@ -2,7 +2,6 @@ package isa.isa.user.service;
 
 import java.util.List;
 
-import isa.isa.user.domain.Donator;
 import isa.isa.user.dto.UserRequest;
 import isa.isa.user.domain.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

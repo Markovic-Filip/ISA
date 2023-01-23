@@ -1,7 +1,5 @@
 package isa.isa.user.dto;
 
-import isa.isa.user.domain.enumeration.Gender;
-
 // DTO koji preuzima podatke iz HTML forme za registraciju
 public class UserRequest {
 

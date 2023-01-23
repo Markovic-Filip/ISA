@@ -1,6 +1,8 @@
 package isa.isa.user.config;
 
 
+import isa.isa.user.service.impl.CustomUserDetailsService;
+import isa.isa.user.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,14 +14,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import isa.isa.user.security.auth.RestAuthenticationEntryPoint;
 import isa.isa.user.security.auth.TokenAuthenticationFilter;
-import isa.isa.user.service.impl.CustomUserDetailsService;
-import isa.isa.user.util.TokenUtils;
 
 @Configuration
 // Ukljucivanje podrske za anotacije "@Pre*" i "@Post*" koje ce aktivirati autorizacione provere za svaki pristup metodi
@@ -87,7 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 								.antMatchers("/h2-console/**").permitAll()	// /h2-console/** ako se koristi H2 baza)
 								.antMatchers("/api/foo").permitAll()		// /api/foo
 								.antMatchers("/center/all").permitAll()
-								.antMatchers("/donator/scheduled").permitAll()
+								.antMatchers("/donator/**").permitAll()
 								
 			// ukoliko ne zelimo da koristimo @PreAuthorize anotacije nad metodama kontrolera, moze se iskoristiti hasRole() metoda da se ogranici
 			// koji tip korisnika moze da pristupi odgovarajucoj ruti. Npr. ukoliko zelimo da definisemo da ruti 'admin' moze da pristupi

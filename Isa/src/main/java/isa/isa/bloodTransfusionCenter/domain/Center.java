@@ -1,11 +1,8 @@
 package isa.isa.bloodTransfusionCenter.domain;
 
-import isa.isa.appointment.domain.TimePeriod;
 import isa.isa.evaulation.domain.Grade;
 import isa.isa.user.domain.Address;
 import isa.isa.user.domain.CenterAdministrator;
-import isa.isa.user.domain.SystemAdministrator;
-import isa.isa.user.domain.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;

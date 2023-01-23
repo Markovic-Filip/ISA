@@ -2,11 +2,11 @@ package isa.isa.user.service.impl;
 
 import java.util.List;
 
+import isa.isa.user.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import isa.isa.user.domain.Role;
-import isa.isa.user.repository.RoleRepository;
 import isa.isa.user.service.RoleService;
 
 @Service

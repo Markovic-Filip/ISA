@@ -34,4 +34,11 @@ public class TimePeriod {
     public void setEnd(Date end) {
         this.end = end;
     }
+
+    @Override
+    public String toString() {
+        return
+                "Pocetak pregleda: " + start + "\r\n" +
+                "Kraj pregleda: " + end;
+    }
 }

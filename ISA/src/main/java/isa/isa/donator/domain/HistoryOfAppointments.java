@@ -1,8 +1,6 @@
 package isa.isa.donator.domain;
 
 import isa.isa.appointment.domain.Report;
-import isa.isa.bloodTransfusionCenter.domain.Equipment;
-import isa.isa.user.domain.Address;
 import isa.isa.user.domain.Donator;
 
 import javax.persistence.*;
@@ -19,9 +17,8 @@ public class HistoryOfAppointments {
     @OneToOne(targetEntity= Donator.class,fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private Donator donator;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="history_id",referencedColumnName = "id",nullable = false)
-    private List<Report> report = new ArrayList<Report>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, mappedBy = "historyOfAppointments")
+    private List<Report> report;
 
     public HistoryOfAppointments(){}
 

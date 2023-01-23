@@ -1,6 +1,5 @@
 package isa.isa.donator.domain;
 
-import isa.isa.user.domain.Address;
 import isa.isa.user.domain.Donator;
 
 import javax.persistence.*;

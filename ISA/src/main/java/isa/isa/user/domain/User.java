@@ -1,7 +1,6 @@
 package isa.isa.user.domain;
 
 import isa.isa.user.domain.enumeration.Gender;
-import isa.isa.user.domain.enumeration.Roles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

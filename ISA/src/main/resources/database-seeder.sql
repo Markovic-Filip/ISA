@@ -32,23 +32,53 @@ INSERT INTO users(role ,id, activated, company, email, gender, jmbg, name, passw
 INSERT INTO center_administrator(id,center) VALUES (2,1);
 
 --appointment
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time, donator_id, medical_staff_id) VALUES (1,1,'2023-01-31 12:00:00', '2023-01-31 12:30:00',1,2);
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (17,0,'2023-02-01 12:00:00', '2023-02-01 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (2,0,'2023-02-02 12:00:00', '2023-02-02 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (3,0,'2023-02-03 12:00:00', '2023-02-03 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (4,0,'2023-02-04 12:00:00', '2023-02-04 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (5,0,'2023-02-05 12:00:00', '2023-02-05 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (6,0,'2023-02-06 12:00:00', '2023-02-06 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (7,0,'2023-02-07 12:00:00', '2023-02-07 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (8,0,'2023-02-08 12:00:00', '2023-02-08 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (9,0,'2023-02-09 12:00:00', '2023-02-09 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (10,0,'2023-02-10 12:00:00', '2023-02-10 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (11,0,'2023-02-11 12:00:00', '2023-02-11 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (12,0,'2023-02-12 12:00:00', '2023-02-12 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (13,0,'2023-02-13 12:00:00', '2023-02-13 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (14,0,'2023-02-14 12:00:00', '2023-02-14 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (15,0,'2023-02-15 12:00:00', '2023-02-15 12:30:00');
-INSERT INTO appointment(id, appointment_state, appointment_end_time, appointment_start_time) VALUES (16,0,'2023-02-16 12:00:00', '2023-02-16 12:30:00');
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, donator_id, medical_staff_id) VALUES (1,1,'2023-01-31 12:00:00', '2023-01-31 12:30:00',1,2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (17,0,'2023-02-01 12:00:00', '2023-02-01 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (2,0,'2023-02-02 12:00:00', '2023-02-02 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (3,0,'2023-02-03 12:00:00', '2023-02-03 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (4,0,'2023-02-04 12:00:00', '2023-02-04 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (5,0,'2023-02-05 12:00:00', '2023-02-05 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (6,0,'2023-02-06 12:00:00', '2023-02-06 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (7,0,'2023-02-07 12:00:00', '2023-02-07 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (8,0,'2023-02-08 12:00:00', '2023-02-08 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (9,0,'2023-02-09 12:00:00', '2023-02-09 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (10,0,'2023-02-10 12:00:00', '2023-02-10 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (11,0,'2023-02-11 12:00:00', '2023-02-11 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (12,0,'2023-02-12 12:00:00', '2023-02-12 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (13,0,'2023-02-13 12:00:00', '2023-02-13 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (14,0,'2023-02-14 12:00:00', '2023-02-14 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (15,0,'2023-02-15 12:00:00', '2023-02-15 12:30:00',2);
+INSERT INTO appointment(id, appointment_state, appointment_start_time, appointment_end_time, medical_staff_id) VALUES (16,3,'2022-01-16 12:00:00', '2022-01-16 12:30:00',2);
+
+--warehouse
+INSERT INTO warehouse(id,center_id) VALUES (1,1);
+INSERT INTO warehouse(id,center_id) VALUES (2,2);
+
+--equipment
+INSERT INTO equipment(equipment_id, name, quantity, warehouse_id)  VALUES (1, 'igla',10,1);
+--blood
+INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (1,true,20,0,1);
+INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (2,true,20,1,1);
+INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (3,true,20,2,1);
+INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (4,true,20,3,1);
+INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (5,false,20,0,1);
+INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (6,false,20,1,1);
+INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (7,false,20,2,1);
+INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (8,false,20,3,1);
+
+--history of appointments
+INSERT INTO history_of_appointments(id, donator_id) VALUES (1,1);
+INSERT INTO report(report_id,appointment_id, blood_id, history_id) VALUES (1,16,1,1);
+INSERT INTO report_equipment(report_id, equipment_id) VALUES (1,1);
+
+--roles
+INSERT INTO ROLE (name) VALUES ('ROLE_USER');
+INSERT INTO ROLE (name) VALUES ('ROLE_CENTER_ADMIN');
+INSERT INTO ROLE (name) VALUES ('ROLE_ADMIN');
+
+INSERT INTO USER_ROLE (user_id, role_id) VALUES (1, 1); -- user-u dodeljujemo rolu USER
+INSERT INTO USER_ROLE (user_id, role_id) VALUES (2, 2); -- admin-u dodeljujemo rolu USER
+
 
 
 

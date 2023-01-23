@@ -2,10 +2,6 @@ package isa.isa.user.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
-import isa.isa.bloodTransfusionCenter.domain.Center;
-import isa.isa.bloodTransfusionCenter.dto.CenterDTO;
-import isa.isa.bloodTransfusionCenter.mapper.CenterMapper;
-import isa.isa.user.domain.Address;
 import isa.isa.user.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +21,6 @@ import isa.isa.user.exception.ResourceConflictException;
 import isa.isa.user.domain.User;
 import isa.isa.user.service.UserService;
 import isa.isa.user.util.TokenUtils;
-
-import java.util.List;
 
 //Kontroler zaduzen za autentifikaciju korisnika
 @RestController

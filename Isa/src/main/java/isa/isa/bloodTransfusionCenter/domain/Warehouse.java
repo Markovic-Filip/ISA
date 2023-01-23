@@ -1,8 +1,5 @@
 package isa.isa.bloodTransfusionCenter.domain;
 
-import isa.isa.user.domain.Address;
-import isa.isa.user.domain.Country;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

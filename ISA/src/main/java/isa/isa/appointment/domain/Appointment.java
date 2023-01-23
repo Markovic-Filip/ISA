@@ -2,13 +2,10 @@ package isa.isa.appointment.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import isa.isa.appointment.domain.enumeration.AppointmentState;
-import isa.isa.bloodTransfusionCenter.domain.Warehouse;
 import isa.isa.user.domain.CenterAdministrator;
 import isa.isa.user.domain.Donator;
-import isa.isa.user.domain.User;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.List;
 
 @Entity
@@ -32,8 +29,8 @@ public class Appointment {
     private TimePeriod timePeriod;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name="donator_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="donator_id")
     private Donator donator;
 
     @JsonIgnore
@@ -91,5 +88,9 @@ public class Appointment {
 
     public void setMedicalStaff(CenterAdministrator medicalStaff) {
         this.medicalStaff = medicalStaff;
+    }
+
+    public long getId() {
+        return id;
     }
 }
