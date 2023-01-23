@@ -49,7 +49,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findByUsername(String username) {
-		return null;
+		User u = null;
+		List<User> users = userRepository.findAll();
+		for (User us:users) {
+			if(us!=null) {
+				if (us.getUsername().equals(username)) {
+					u = us;
+				}
+			}
+		}
+		return u;
 	}
 
 	public List<User> findAll() throws AccessDeniedException {
@@ -59,7 +68,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User save(UserRequest userRequest) {
-		User u = new User();
+		Donator u = new Donator();
 		u.setUsername(userRequest.getUsername());
 		
 		// pre nego sto postavimo lozinku u atribut hesiramo je kako bi se u bazi nalazila hesirana lozinka
@@ -73,6 +82,9 @@ public class UserServiceImpl implements UserService {
 		u.setJmbg(userRequest.getJmbg());
 		u.setProfession(userRequest.getProffesion());
 		u.setCompany(userRequest.getCompany());
+		u.setJmbg(userRequest.getJmbg());
+		u.setActivated(false);
+
 
 		Address adress = addressService.findById(userRequest.getAddress_id());
 		u.setAddress(adress);

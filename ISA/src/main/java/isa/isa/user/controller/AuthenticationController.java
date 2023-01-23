@@ -2,8 +2,12 @@ package isa.isa.user.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import isa.isa.QRCode.email.EmailService;
+import isa.isa.user.repository.DonatorRepository;
 import isa.isa.user.service.AddressService;
+import isa.isa.user.service.DonatorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +39,12 @@ public class AuthenticationController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private DonatorService donatorService;
+	@Autowired
+	private EmailService emailService;
+	@Autowired
+	private DonatorRepository donatorRepository;
 
 	@Autowired
 	private AddressService addressService;
@@ -50,6 +60,10 @@ public class AuthenticationController {
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 				authenticationRequest.getUsername(), authenticationRequest.getPassword()));
 
+		User existUser = this.userService.findByUsername(authenticationRequest.getUsername());
+		if (existUser.getActivated()==false) {
+			throw new ResourceConflictException(existUser.getId(), "Account is not activated on email");
+		}
 		// Ukoliko je autentifikacija uspesna, ubaci korisnika u trenutni security
 		// kontekst
 		SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -68,18 +82,34 @@ public class AuthenticationController {
 	public ResponseEntity<User> addUser(@RequestBody UserRequest userRequest, UriComponentsBuilder ucBuilder) {
 
 		User existUser = this.userService.findByUsername(userRequest.getUsername());
-
+		userRequest.setRole("Donator");
 		if (existUser != null) {
 			throw new ResourceConflictException(userRequest.getId(), "Username already exists");
 		}
 
-		if (userRequest.getPassword() != userRequest.getPasswordAgain()) {
+		if (!userRequest.getPassword().equals( userRequest.getPasswordAgain())) {
 			throw new ResourceConflictException(userRequest.getId(), "Passwords doesnt match");
 		}
+		try {
+			User user = this.donatorService.save(userRequest);
+			this.donatorService.createHistoryQuestionnaire(this.donatorRepository.getDonatorByUsername(userRequest.getUsername()));
+			this.emailService.sendVerificationEmail(this.donatorRepository.getDonatorByUsername(userRequest.getUsername()));
 
-		User user = this.userService.save(userRequest);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 
-		return new ResponseEntity<>(user, HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@GetMapping("/verify")
+	public String verifyUser(@Param("code") String code){
+		if(donatorService.verify(code)){
+			return "verify_success";
+		}else{
+			return "verify_fail";
+		}
 	}
 
 }

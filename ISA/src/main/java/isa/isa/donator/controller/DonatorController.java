@@ -61,7 +61,7 @@ public class DonatorController {
 
     @PostMapping(value = "/scheduleAppointment", consumes =  MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> scheduleAppointment(@RequestBody Long appointmentId) throws MessagingException, NotFoundException, IOException, WriterException {
-        Long donatorId = 1L;
+        Long donatorId = 100L;
         this.appointmentService.scheduleAppointment(appointmentId,donatorId);
 
         return new ResponseEntity<>(HttpStatus.OK);

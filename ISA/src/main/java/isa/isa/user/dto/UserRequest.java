@@ -29,6 +29,15 @@ public class UserRequest {
 
 	private Long address_id;
 
+	private String role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public Long getAddress_id() {
 		return address_id;

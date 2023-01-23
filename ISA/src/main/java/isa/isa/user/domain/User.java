@@ -1,5 +1,6 @@
 package isa.isa.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import isa.isa.user.domain.enumeration.Gender;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -57,7 +58,7 @@ public class User implements UserDetails {
     @Column
     private Boolean passwordChanged;
 
-    @Column
+    @Column(insertable = false, updatable = false)
     private String role;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -129,27 +130,29 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
-
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public void setUsername(String username) {

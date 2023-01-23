@@ -1,5 +1,6 @@
 package isa.isa.user.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import isa.isa.user.repository.RoleRepository;
@@ -23,8 +24,17 @@ public class RoleServiceImpl implements RoleService {
 
   @Override
   public List<Role> findByName(String name) {
-	List<Role> roles = this.roleRepository.findByName(name);
-    return roles;
+	List<Role> roles = this.roleRepository.findAll();
+    List<Role> rolesAuthorities = new ArrayList<>();
+
+
+    for(Role a : roles){
+      if(a.getName().equals(name)){
+        rolesAuthorities.add(a);
+      }
+    }
+
+    return rolesAuthorities;
   }
 
 
