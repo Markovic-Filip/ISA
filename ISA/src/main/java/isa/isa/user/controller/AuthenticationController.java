@@ -51,6 +51,7 @@ public class AuthenticationController {
 	
 	// Prvi endpoint koji pogadja korisnik kada se loguje.
 	// Tada zna samo svoje korisnicko ime i lozinku i to prosledjuje na backend.
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/login")
 	public ResponseEntity<UserTokenState> createAuthenticationToken(
 			@RequestBody JwtAuthenticationRequest authenticationRequest, HttpServletResponse response) {

@@ -111,7 +111,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		// Autentifikacija ce biti ignorisana ispod navedenih putanja (kako bismo ubrzali pristup resursima)
 		// Zahtevi koji se mecuju za web.ignoring().antMatchers() nemaju pristup SecurityContext-u
-		
+
 		// Dozvoljena POST metoda na ruti /auth/login, za svaki drugi tip HTTP metode greska je 401 Unauthorized
 		 web.ignoring().antMatchers(HttpMethod.POST, "/auth/login");
 		 
