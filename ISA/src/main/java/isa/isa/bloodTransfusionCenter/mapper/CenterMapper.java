@@ -14,7 +14,7 @@ public class CenterMapper {
         List<CenterDTO> centerDTOs = new ArrayList<CenterDTO>();
         for (Center c: centers) {
             AddressDTO a = AddressMapper.addressToAddressDTO(c.getAddress());
-            CenterDTO cd = new CenterDTO(c.getDescription(),c.getName(), a);
+            CenterDTO cd = new CenterDTO(c.getDescription(),c.getName(), a.getAddress());
             centerDTOs.add(cd);
         }
         return centerDTOs;

@@ -14,8 +14,11 @@ public class AddressMapper {
         Address a = address;
         City ci = a.getCity();
         Country co = ci.getCountry();
+        String adresa = a.getStreet() + " " + a.getNumber()
+                      + ", " + ci.getZipCode() + " " + ci.getName() + ", " + co.getName();
 
-        AddressDTO addressDTO = new AddressDTO(a.getNumber(), a.getStreet(), ci.getName(), ci.getZipCode(), co.getName());
+
+        AddressDTO addressDTO = new AddressDTO(address.getId(), adresa);
 
 
 

@@ -3,6 +3,7 @@ package isa.isa.user.controller;
 import javax.servlet.http.HttpServletResponse;
 
 import isa.isa.QRCode.email.EmailService;
+import isa.isa.user.dto.AddressDTO;
 import isa.isa.user.repository.DonatorRepository;
 import isa.isa.user.service.AddressService;
 import isa.isa.user.service.DonatorService;
@@ -25,6 +26,8 @@ import isa.isa.user.exception.ResourceConflictException;
 import isa.isa.user.domain.User;
 import isa.isa.user.service.UserService;
 import isa.isa.user.util.TokenUtils;
+
+import java.util.List;
 
 //Kontroler zaduzen za autentifikaciju korisnika
 @RestController
@@ -111,6 +114,13 @@ public class AuthenticationController {
 		}else{
 			return "verify_fail";
 		}
+	}
+
+	@GetMapping("/allAddress")
+	public ResponseEntity<?> getAddresses(){
+		List<AddressDTO> addressDTOList = addressService.findAll();
+
+		return new ResponseEntity<>(addressDTOList, HttpStatus.OK);
 	}
 
 }

@@ -8,14 +8,14 @@ public class CenterDTO {
     private String description;
     private String name;
 
-    private AddressDTO addressDTO;
+    private String address;
 
 
 
-    public CenterDTO(String description, String name, AddressDTO addressDTO) {
+    public CenterDTO(String description, String name, String addressDTO) {
         this.description = description;
         this.name = name;
-        this.addressDTO = addressDTO;
+        this.address = addressDTO;
     }
 
 
@@ -36,11 +36,11 @@ public class CenterDTO {
         this.name = name;
     }
 
-    public AddressDTO getAddressDTO() {
-        return addressDTO;
+    public String getAddressDTO() {
+        return address;
     }
 
-    public void setAddressDTO(AddressDTO addressDTO) {
-        this.addressDTO = addressDTO;
+    public void setAddressDTO(String addressDTO) {
+        this.address = addressDTO;
     }
 }

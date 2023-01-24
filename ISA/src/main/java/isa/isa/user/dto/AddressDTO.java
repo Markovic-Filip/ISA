@@ -2,63 +2,31 @@ package isa.isa.user.dto;
 
 public class AddressDTO {
 
-    private String number;
+    private Long id;
 
-    private String street;
+    private String address;
 
-    private String cityName;
+    public AddressDTO(){}
 
-    private String zipCode;
-
-    private String countryName;
-
-    public AddressDTO(){};
-
-    public AddressDTO(String number, String street, String cityName, String zipCode, String countryName) {
-        this.number = number;
-        this.street = street;
-        this.cityName = cityName;
-        this.zipCode = zipCode;
-        this.countryName = countryName;
+    public AddressDTO(Long id, String address) {
+        this.id = id;
+        this.address = address;
     }
 
-    public String getNumber() {
-        return number;
+    public Long getId() {
+        return id;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getStreet() {
-        return street;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getCountryName() {
-        return countryName;
-    }
-
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
+
