@@ -19,6 +19,8 @@ public class Center {
 
     @Column
     private String description;
+    @Column
+    private Double averageGrade;
 
     //workshift
 
@@ -96,6 +98,14 @@ public class Center {
 
     public void setWorkShift(List<WorkShift> workShift) {
         this.workShift = workShift;
+    }
+
+    public Double getAverageGrade() {
+        return averageGrade;
+    }
+
+    public void setAverageGrade(Double averageGrade) {
+        this.averageGrade = averageGrade;
     }
 }
 

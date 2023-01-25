@@ -3,7 +3,7 @@ package isa.isa.user.controller;
 import javax.servlet.http.HttpServletResponse;
 
 import isa.isa.QRCode.email.EmailService;
-import isa.isa.user.dto.AddressDTO;
+import isa.isa.user.dto.*;
 import isa.isa.user.repository.DonatorRepository;
 import isa.isa.user.service.AddressService;
 import isa.isa.user.service.DonatorService;
@@ -19,9 +19,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import isa.isa.user.dto.JwtAuthenticationRequest;
-import isa.isa.user.dto.UserRequest;
-import isa.isa.user.dto.UserTokenState;
 import isa.isa.user.exception.ResourceConflictException;
 import isa.isa.user.domain.User;
 import isa.isa.user.service.UserService;
@@ -56,7 +53,7 @@ public class AuthenticationController {
 	// Tada zna samo svoje korisnicko ime i lozinku i to prosledjuje na backend.
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/login")
-	public ResponseEntity<UserTokenState> createAuthenticationToken(
+	public ResponseEntity<?> createAuthenticationToken(
 			@RequestBody JwtAuthenticationRequest authenticationRequest, HttpServletResponse response) {
 
 		// Ukoliko kredencijali nisu ispravni, logovanje nece biti uspesno, desice se
@@ -78,7 +75,7 @@ public class AuthenticationController {
 		int expiresIn = tokenUtils.getExpiredIn();
 
 		// Vrati token kao odgovor na uspesnu autentifikaciju
-		return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
+		return ResponseEntity.ok(new AuthenticatedDTO(user.getRole(),user.getUsername(), new UserTokenState(jwt, expiresIn)));
 	}
 
 	// Endpoint za registraciju novog korisnika

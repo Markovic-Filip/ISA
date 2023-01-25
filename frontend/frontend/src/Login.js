@@ -4,7 +4,13 @@ import axios from './api/axios';
 import { Link } from 'react-router-dom';
 const LOGIN_URL = '/auth/login';
 
-const Login = ()=>{
+const Login = ({role,roles})=>{
+    
+    useEffect(() => {
+    if (!(role==null)) {
+            window.location.href = '/';
+        }
+      },[])    
     const {setAuth} = useContext(AuthContext);
     const userRef = useRef();
     const errRef= useRef();
@@ -34,8 +40,12 @@ const Login = ()=>{
                 }
             );
             console.log(JSON.stringify(response?.data));
-            const accessToken = response?.data?.accessToken;
-            setAuth({user,pwd,accessToken});
+            const accessToken = response?.data?.token.accessToken;
+            const role = response?.data?.role;
+            localStorage.setItem("role", role);
+            localStorage.setItem("token", accessToken);
+
+            setAuth({user,pwd,role,accessToken});
             setUser('');
             setPwd('');
             setSuccess(true);
@@ -54,6 +64,8 @@ const Login = ()=>{
         }
         
     }
+
+    
 
     return (
         <>

@@ -15,7 +15,13 @@ const GENDER_REGEX = /^(male|female|other)$/i;
 const REGISTER_URL = '/auth/signup';
 const ADDRESS_URL = '/auth/allAddress';
 
-const Register = () => {
+const Register = ({role,roles}) => {
+    useEffect(() => {
+        if (roles.includes(role)) {
+            window.location.href = '/';
+        }
+      },[]) 
+
     const userRef = useRef();
     const errRef = useRef();
 
