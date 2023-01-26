@@ -27,8 +27,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.mail.MessagingException;
+import javax.mail.search.MessageIDTerm;
 import java.io.IOException;
 import java.util.List;
 
@@ -67,11 +69,11 @@ public class DonatorController {
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
-    @GetMapping("/questionnaire")
-    public ResponseEntity<Questionnaire> createQuestionnaire(@RequestBody QuestionnaireDTO questionnaireDTO){
+    @PostMapping(value="/questionnaire", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> createQuestionnaire(@RequestBody QuestionnaireDTO questionnaireDTO, UriComponentsBuilder ucBuilder){
         Questionnaire questionnaire = this.questionnaireService.save(questionnaireDTO);
 
-        return new ResponseEntity<>(questionnaire, HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping(value = "/scheduleAppointment", consumes =  MediaType.APPLICATION_JSON_VALUE)

@@ -26,6 +26,8 @@ INSERT INTO center(id, average_grade,description, name, address_id) VALUES (2, 6
 --donator
 INSERT INTO users(role ,id, activated, company, email, gender, jmbg, name, password,password_changed, phone_number, profession, surname, username, address) VALUES ('Donator',100, true, 'student', 'markovicfilip98@gmail.com', 1, '1111111111111', 'Filip', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', true, '0645306855', 'student', 'Markovic','Filip123', 3);
 INSERT INTO donator(penaltys, id) VALUES (0, 100);
+INSERT INTO questionnaire(id, donator_id,filled) VALUES (100,100,false);
+UPDATE donator SET questionnaire_id = 100 WHERE id =100;
 
 --medical_stuff
 INSERT INTO users(role ,id, activated, company, email, gender, jmbg, name, password,password_changed, phone_number, profession, surname, username, address) VALUES ('CenterAdministrator',200, true, 'ZTK', 'nikolicfilip98@gmail.com', 1, '1111111111110', 'Filip', '123', true, '0645306856', 'medicinski tehnicar', 'Nikolic','Filip124', 4);

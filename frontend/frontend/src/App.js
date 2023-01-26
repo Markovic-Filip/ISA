@@ -16,6 +16,7 @@ import UserInformation from './UserInformation';
 import ScheduledAppointments from './ScheduledAppointments';
 import AvailableApp from './AvailableApp';
 import QrCodeApp from './QrCodeApp';
+import Questionnaire from './Questionnaire';
 
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
            <Route path='/scheduled' element={<ScheduledAppointments role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/available' element={<AvailableApp center={center} role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/qrappointment' element={<QrCodeApp role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           <Route path='/questionnaire' element={<Questionnaire role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           
        
          </Routes>
         )}

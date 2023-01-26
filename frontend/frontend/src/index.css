@@ -153,3 +153,16 @@ nav li {
     padding: 8px;
     text-align: left;
   }
+  .survey-form {
+    display:inline-block;
+    vertical-align: top;
+    
+  }
+  
+  .survey-form input[type="radio"] {
+    margin: 0 10px;
+  }
+  .tight-spacing{
+    display:inline-block;
+  vertical-align: top;
+  }
