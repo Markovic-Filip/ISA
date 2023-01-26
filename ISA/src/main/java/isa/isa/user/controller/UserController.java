@@ -54,10 +54,7 @@ public class UserController {
         return fooObj;
     }
 
-	@GetMapping("/penalty")
-	public int penalty(){
-		return 0;
-	}
+
 
 
 }

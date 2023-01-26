@@ -53,6 +53,7 @@ const Centers = ()=>{
     return (
         <div>
             <NavigationDonator/>
+            <h1>CENTERS</h1>
             <div id="tabela">
                 
                     <Table columns={columns} data={data} />  

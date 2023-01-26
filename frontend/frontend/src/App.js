@@ -10,6 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Centers from './Centers';
 import HistoryVisits from './HistoryVisits';
+import Penaltys from './Penaltys';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
            <Route path='/' element={<Home role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>} />
            <Route path='/centers' element={<Centers role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/history' element={<HistoryVisits role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           <Route path='/penalty' element={<Penaltys role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
          </Routes>
         )}
       

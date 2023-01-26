@@ -22,6 +22,9 @@ const NavigationDonator = () => {
             <Link to="/history">History</Link>
             </li>
             <li>
+            <Link to="/penalty">Penaltys</Link>
+            </li>
+            <li>
             <Link onClick={() => logOut()}>LogOut</Link>
             </li>
         </ul>

@@ -12,6 +12,7 @@ import isa.isa.donator.dto.QuestionnaireDTO;
 import isa.isa.donator.service.HistoryService;
 import isa.isa.donator.service.QuestionnaireService;
 import isa.isa.user.domain.User;
+import isa.isa.user.repository.DonatorRepository;
 import isa.isa.user.repository.UserRepository;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,8 @@ public class DonatorController {
     private HistoryService historyService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private DonatorRepository donatorRepository;
 
     @GetMapping("/scheduled")
     public ResponseEntity<?> loadAll() {
@@ -96,6 +99,15 @@ public class DonatorController {
         List<HistorySuccessfulDTO> historySuccessfulDTOS = historyService.getHistory(donatorId);
 
         return new ResponseEntity<>(historySuccessfulDTOS, HttpStatus.OK);
+    }
+    @GetMapping("/penalty")
+    public ResponseEntity<?> getPenalty(@RequestParam("username") String username){
+        //dodaj id donatora
+        Long donatorId= userRepository.findByUsername(username).getId();
+
+        int penalty = donatorRepository.getById(donatorId).getPenaltys();
+
+        return new ResponseEntity<>(penalty, HttpStatus.OK);
     }
 
 
