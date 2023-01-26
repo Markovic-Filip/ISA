@@ -97,6 +97,7 @@ public class DonatorServiceImpl implements DonatorService {
         historyOfAppointments.setDonator(donator);
         historyOfAppointmentsRepository.save(historyOfAppointments);
         questionnaire.setDonator(donator);
+        questionnaire.setFilled(false);
         questionnaireRepository.save(questionnaire);
         donator.setQuestionnaire(questionnaire);
         donator.setHistoryOfAppointments(historyOfAppointments);

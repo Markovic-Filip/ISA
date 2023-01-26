@@ -15,7 +15,9 @@ import isa.isa.appointment.repository.ReportRepository;
 import isa.isa.appointment.service.AppointmentService;
 import isa.isa.bloodTransfusionCenter.repository.BloodRepository;
 import isa.isa.donator.domain.HistoryOfAppointments;
+import isa.isa.donator.dto.AllAvailable;
 import isa.isa.donator.repository.HistoryOfAppointmentsRepository;
+import isa.isa.user.domain.Donator;
 import isa.isa.user.repository.DonatorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,12 +59,16 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<ScheduledAppointment> getAllAvailable(Long centerId) {
+    public List<ScheduledAppointment> getAllAvailable(AllAvailable allAvailable) {
+        String username = allAvailable.getUsername();
+        Donator d = donatorRepository.getDonatorByUsername(username);
         List<ScheduledAppointment> appointments = new ArrayList<ScheduledAppointment>();
         List<Appointment> allAppointments = appointmentRepository.findAll();
         for (Appointment a : allAppointments) {
-            if (a.getAppointmentState()== AppointmentState.CREATED && a.getMedicalStaff().getCenter().getId()==centerId) {
-                appointments.add(AppointmentMapper.appointmentToScheduledAppointment(a));
+            if (a.getAppointmentState()== AppointmentState.CREATED && a.getMedicalStaff().getCenter().getId()==allAvailable.getCenterId()) {
+                if(d.getPenaltys()<3 && d.getQuestionnaire().getFilled()) {
+                    appointments.add(AppointmentMapper.appointmentToScheduledAppointment(a));
+                }
             }
         }
         return appointments;

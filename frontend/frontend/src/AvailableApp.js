@@ -41,9 +41,12 @@ const AvailableApp = ({center,role,roles})=>{
     
       useEffect(() => {
         const token = localStorage.getItem("token");
-        //const username = localStorage.getItem("username");
+        const username = localStorage.getItem("username");
+        console.log(username);
+        console.log(center);
         axios   
-            .get(`/donator/available?center=${center}`, {
+            .get('/donator/available',{
+            params: {centerId : center,username : username}, 
                 headers: {
                     Authorization: "Bearer " + token
                 }

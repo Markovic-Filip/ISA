@@ -8,6 +8,7 @@ import isa.isa.appointment.dto.QRAppointmentDTO;
 import isa.isa.appointment.dto.ScheduledAppointment;
 import isa.isa.appointment.service.AppointmentService;
 import isa.isa.donator.domain.Questionnaire;
+import isa.isa.donator.dto.AllAvailable;
 import isa.isa.donator.dto.CancelAppointmentRequest;
 import isa.isa.donator.dto.HistorySuccessfulDTO;
 import isa.isa.donator.dto.QuestionnaireDTO;
@@ -63,8 +64,9 @@ public class DonatorController {
     }
 
     @GetMapping("/available")
-    public ResponseEntity<?> loadAllAvailable(@RequestParam("center") Long centerId) {
-        List<ScheduledAppointment> appointments = this.appointmentService.getAllAvailable(centerId);
+    public ResponseEntity<?> loadAllAvailable(@RequestParam("centerId") Long centerId, @RequestParam("username") String username) {
+        AllAvailable allAvailable = new AllAvailable(centerId,username);
+        List<ScheduledAppointment> appointments = this.appointmentService.getAllAvailable(allAvailable);
 
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
