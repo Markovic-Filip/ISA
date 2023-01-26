@@ -77,11 +77,12 @@ const ScheduledAppointments = ({role,roles})=>{
         const age = row.id;
         console.log(age);
         const username = localStorage.getItem("username");
+        const token = localStorage.getItem("token");
 
             const response = axios.post('/donator/cancelAppointment',
                 JSON.stringify({appointmentId : age,username : username}),
                 {
-                    headers: {'Content-Type':'application/json'},
+                    headers: {'Content-Type':'application/json', Authorization: "Bearer " + token},
                     withCredentials:true
                 }
             );

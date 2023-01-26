@@ -119,16 +119,17 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.roles;
     }
 
     public String getPassword() {
         return password;
     }
 
-    @Override
+
     public String getUsername() {
         return username;
     }

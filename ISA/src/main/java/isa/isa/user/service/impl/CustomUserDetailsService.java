@@ -12,7 +12,7 @@ import isa.isa.user.domain.User;
 // Ovaj servis je namerno izdvojen kao poseban u ovom primeru.
 // U opstem slucaju UserServiceImpl klasa bi mogla da implementira UserDetailService interfejs.
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class 	CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;

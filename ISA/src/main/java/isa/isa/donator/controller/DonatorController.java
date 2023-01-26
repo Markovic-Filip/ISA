@@ -54,6 +54,7 @@ public class DonatorController {
     @Autowired
     private DonatorRepository donatorRepository;
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/scheduled")
     public ResponseEntity<?> loadAll(@RequestParam("username") String username){
         User u= userRepository.findByUsername(username);
@@ -62,7 +63,7 @@ public class DonatorController {
 
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/available")
     public ResponseEntity<?> loadAllAvailable(@RequestParam("centerId") Long centerId, @RequestParam("username") String username) {
         AllAvailable allAvailable = new AllAvailable(centerId,username);
@@ -71,13 +72,14 @@ public class DonatorController {
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping(value="/questionnaire", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createQuestionnaire(@RequestBody QuestionnaireDTO questionnaireDTO, UriComponentsBuilder ucBuilder){
         Questionnaire questionnaire = this.questionnaireService.save(questionnaireDTO);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('USER')")
     @PostMapping(value = "/scheduleAppointment", consumes =  MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> scheduleAppointment(@RequestBody CancelAppointmentRequest request) throws MessagingException, NotFoundException, IOException, WriterException {
         User u= userRepository.findByUsername(request.getUsername());
@@ -85,7 +87,7 @@ public class DonatorController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('USER')")
     @PostMapping(value = "/cancelAppointment", consumes =  MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> cancelPatient(@RequestBody CancelAppointmentRequest request) throws MessagingException, NotFoundException, IOException, WriterException {
         User u= userRepository.findByUsername(request.getUsername());
@@ -93,6 +95,7 @@ public class DonatorController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/qrAppointments")
     public ResponseEntity<?> getQRAppointments(@RequestParam("username") String username){
 
@@ -101,6 +104,7 @@ public class DonatorController {
 
         return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
     }
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/History")
     public ResponseEntity<?> getHistory(@RequestParam("username") String username){
         //dodaj id donatora
@@ -110,6 +114,7 @@ public class DonatorController {
 
         return new ResponseEntity<>(historySuccessfulDTOS, HttpStatus.OK);
     }
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/penalty")
     public ResponseEntity<?> getPenalty(@RequestParam("username") String username){
         //dodaj id donatora
@@ -120,6 +125,7 @@ public class DonatorController {
         return new ResponseEntity<>(penalty, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/information")
     public ResponseEntity<?> getInfromation(@RequestParam("username") String username){
         User u= userRepository.findByUsername(username);

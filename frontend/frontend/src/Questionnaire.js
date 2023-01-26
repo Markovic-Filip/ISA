@@ -40,12 +40,13 @@ const Questionnaire = ({role,roles})=>{
         const q11 = question11;
         const q12 = question12;
         const username = localStorage.getItem("username");
+        const token = localStorage.getItem("token");
         
         try {
             const response = await axios.post('/donator/questionnaire',
                 JSON.stringify({username,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12 }),
                 {
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json', Authorization: "Bearer " + token },
                     withCredentials: true
                 }
             );
