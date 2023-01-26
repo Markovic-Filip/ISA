@@ -91,9 +91,9 @@ public class DonatorController {
     }
     @GetMapping("/qrAppointments")
     public ResponseEntity<?> getQRAppointments(@RequestParam("username") String username){
-        
+
         Long donatorId= userRepository.findByUsername(username).getId();
-        List<QRAppointmentDTO> appointmentDTOS = appointmentService.getQRAppointments(1L);
+        List<QRAppointmentDTO> appointmentDTOS = appointmentService.getQRAppointments(donatorId);
 
         return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
     }
