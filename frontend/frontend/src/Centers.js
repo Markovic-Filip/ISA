@@ -30,6 +30,10 @@ const Centers = ()=>{
             Header: 'Address',
             accessor: 'addressDTO',
         },
+        {
+            Header: 'Button',
+            Cell: ({ row }) => <button>Click me</button>,
+        },
       ]
     
         

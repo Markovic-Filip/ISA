@@ -12,6 +12,8 @@ import isa.isa.donator.dto.QuestionnaireDTO;
 import isa.isa.donator.service.HistoryService;
 import isa.isa.donator.service.QuestionnaireService;
 import isa.isa.user.domain.User;
+import isa.isa.user.dto.UserInformation;
+import isa.isa.user.mapper.UserMapper;
 import isa.isa.user.repository.DonatorRepository;
 import isa.isa.user.repository.UserRepository;
 import org.apache.coyote.Response;
@@ -108,6 +110,15 @@ public class DonatorController {
         int penalty = donatorRepository.getById(donatorId).getPenaltys();
 
         return new ResponseEntity<>(penalty, HttpStatus.OK);
+    }
+
+    @GetMapping("/information")
+    public ResponseEntity<?> getInfromation(@RequestParam("username") String username){
+        User u= userRepository.findByUsername(username);
+
+        UserInformation ui = UserMapper.mapUserToUserInformation(u);
+
+        return new ResponseEntity<>(ui, HttpStatus.OK);
     }
 
 

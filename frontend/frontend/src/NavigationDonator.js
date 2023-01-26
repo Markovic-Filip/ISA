@@ -25,6 +25,12 @@ const NavigationDonator = () => {
             <Link to="/penalty">Penaltys</Link>
             </li>
             <li>
+            <Link to="/complaint">Complaints</Link>
+            </li>
+            <li>
+            <Link to="/myinformation">Profile</Link>
+            </li>
+            <li>
             <Link onClick={() => logOut()}>LogOut</Link>
             </li>
         </ul>
