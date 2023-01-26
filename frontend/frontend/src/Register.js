@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Select from 'react-select';
 import axios from './api/axios';
+import Navigation from "./Navigation";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -207,11 +208,12 @@ const Register = ({role,roles}) => {
 
     return (
         <>
+        <Navigation/>
             {success ? (
                 <section>
                     <h1>Success!</h1>
                     <p>
-                        <a href="#">Sign In</a>
+                        <Link to="/login">Log In</Link>
                     </p>
                 </section>
             ) : (

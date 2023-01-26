@@ -13,7 +13,7 @@ const NavigationDonator = () => {
         <nav>
         <ul>
             <li>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
             </li>
             <li>
             <Link to="/centers">Centers</Link>
@@ -23,6 +23,12 @@ const NavigationDonator = () => {
             </li>
             <li>
             <Link to="/scheduled">Scheduled</Link>
+            </li>
+            <li>
+            <Link to="/qrappointment">QR</Link>
+            </li>
+            <li>
+            <Link to="/questionnaire">Questionnaire</Link>
             </li>
             <li>
             <Link to="/penalty">Penaltys</Link>

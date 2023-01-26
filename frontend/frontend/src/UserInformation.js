@@ -7,7 +7,13 @@ import NavigationDonator from "./NavigationDonator";
 const HISTORY_URL = '/donator/History';
 
 
-const UserInformation = ()=>{
+const UserInformation = ({role,roles})=>{
+    
+    useEffect(() => {
+    if (!(role==roles)) {
+            window.location.href = '/';
+        }
+      },[])   
 
     const [address_id, setAddress] = useState();
     const [username, setUsername] = useState();

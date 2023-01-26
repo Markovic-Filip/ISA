@@ -17,12 +17,14 @@ import ScheduledAppointments from './ScheduledAppointments';
 import AvailableApp from './AvailableApp';
 import QrCodeApp from './QrCodeApp';
 import Questionnaire from './Questionnaire';
+import HomeUna from './HomeUna';
 
 
 function App() {
     const { auth } = useContext(AuthContext);
     const role = localStorage.getItem("role") || null;
     const center = localStorage.getItem("center") || null;
+   
 
   
 
@@ -33,16 +35,18 @@ function App() {
           <Routes>
            <Route path='/login' element={<Login role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>} />
            <Route path='/register' element={<Register role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>} />
-           <Route path='/' element={<Home role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>} />
-           <Route path='/centers' element={<Centers role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
-           <Route path='/history' element={<HistoryVisits role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
-           <Route path='/penalty' element={<Penaltys role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
-           <Route path='/complaint' element={<Complaints role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
-           <Route path='/myinformation' element={<UserInformation role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
-           <Route path='/scheduled' element={<ScheduledAppointments role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
-           <Route path='/available' element={<AvailableApp center={center} role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
-           <Route path='/qrappointment' element={<QrCodeApp role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
-           <Route path='/questionnaire' element={<Questionnaire role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           <Route path='/home' element={<Home role={role} roles={["Donator"]}/>} />
+           <Route path='/centers' element={<Centers role={role} roles={["Donator"]}/>}/>
+           <Route path='/history' element={<HistoryVisits role={role} roles={["Donator"]}/>}/>
+           <Route path='/penalty' element={<Penaltys role={role} roles={["Donator"]}/>}/>
+           <Route path='/complaint' element={<Complaints role={role} roles={["Donator"]}/>}/>
+           <Route path='/myinformation' element={<UserInformation role={role} roles={["Donator"]}/>}/>
+           <Route path='/scheduled' element={<ScheduledAppointments role={role} roles={["Donator"]}/>}/>
+           <Route path='/available' element={<AvailableApp center={center} role={role} roles={["Donator"]}/>}/>
+           <Route path='/qrappointment' element={<QrCodeApp role={role} roles={["Donator"]}/>}/>
+           <Route path='/questionnaire' element={<Questionnaire role={role} roles={["Donator"]}/>}/>
+           <Route path='/' element={<HomeUna role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           
            
        
          </Routes>

@@ -8,7 +8,13 @@ import Table from './Table';
 const HISTORY_URL = '/donator/History';
 
 
-const QrCodeApp = ()=>{
+const QrCodeApp = ({role,roles})=>{
+    
+    useEffect(() => {
+    if (!(role==roles)) {
+            window.location.href = '/';
+        }
+      },[])   
 
     const [table, setTable] = useState(null);
     const [data, setData] = useState([]);
@@ -51,7 +57,7 @@ const QrCodeApp = ()=>{
     return (
         <div>
             <NavigationDonator/>
-            <h1>HISTORY OF VISITS</h1>
+            <h1>YOUR QR CODE APPROVES</h1>
             <div id="tabela">
                 
                     <Table columns={columns} data={data} />  

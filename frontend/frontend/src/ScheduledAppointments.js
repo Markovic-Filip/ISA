@@ -8,7 +8,13 @@ import Table from './Table';
 const CENTER_URL = '/center/all';
 
 
-const ScheduledAppointments = ()=>{
+const ScheduledAppointments = ({role,roles})=>{
+    
+    useEffect(() => {
+    if (!(role==roles)) {
+            window.location.href = '/';
+        }
+      },[])   
 
     const [table, setTable] = useState(null);
     const [data, setData] = useState([]);

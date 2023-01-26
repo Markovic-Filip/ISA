@@ -2,13 +2,14 @@ import {useRef, useState, useEffect,useContext} from 'react';
 import AuthContext from "./context/AuthProvider";
 import axios from './api/axios';
 import { Link } from 'react-router-dom';
+import Navigation from './Navigation';
 const LOGIN_URL = '/auth/login';
 
 const Login = ({role,roles})=>{
     
     useEffect(() => {
     if (!(role==null)) {
-            window.location.href = '/';
+            window.location.href = '/home';
         }
       },[])    
     const {setAuth} = useContext(AuthContext);
@@ -70,12 +71,13 @@ const Login = ({role,roles})=>{
 
     return (
         <>
+            <Navigation/>
             {success ? (
                 <section>
                     <h1>You are logged in!</h1>
                     <br />
                     <p>
-                        <Link to="/">Go to Home</Link>
+                        <Link to="/home">Go to Home</Link>
                     </p>
                 </section>
             ) : (

@@ -8,7 +8,13 @@ import Table from './Table';
 const HISTORY_URL = '/donator/History';
 
 
-const HistoryVisits = ()=>{
+const HistoryVisits = ({role,roles})=>{
+    
+  useEffect(() => {
+  if (!(role==roles)) {
+          window.location.href = '/';
+      }
+    },[])   
 
     const [table, setTable] = useState(null);
     const [data, setData] = useState([]);

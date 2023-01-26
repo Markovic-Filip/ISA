@@ -1,8 +1,15 @@
 import NavigationDonator from "./NavigationDonator"
 import { useState } from "react";
 import axios from "./api/axios";
+import { useEffect } from "react";
 
-const Questionnaire = ()=>{
+const Questionnaire = ({role,roles})=>{
+    
+    useEffect(() => {
+    if (!(role==roles)) {
+            window.location.href = '/';
+        }
+      },[])   
 
     const [question1, setQuestion1] = useState('');
     const [question2, setQuestion2] = useState('');

@@ -7,7 +7,13 @@ import NavigationDonator from "./NavigationDonator";
 const HISTORY_URL = '/donator/History';
 
 
-const Penaltys = ()=>{
+const Penaltys = ({role,roles})=>{
+    
+    useEffect(() => {
+    if (!(role==roles)) {
+            window.location.href = '/';
+        }
+      },[])   
 
     const [data, setData] = useState();
 

@@ -84,7 +84,7 @@ const AvailableApp = ({center,role,roles})=>{
     return (
         <div>
             <NavigationDonator/>
-            <h1>CENTERS</h1>
+            <h1>APPOINTMENTS</h1>
             <div id="tabela">
                 
                     <Table columns={columns} data={data} />  

@@ -5,7 +5,13 @@ import Select from 'react-select';
 
 
 
-const Complaints = ()=>{
+const Complaints = ({role,roles})=>{
+    
+    useEffect(() => {
+    if (!(role==roles)) {
+            window.location.href = '/';
+        }
+      },[])   
     const options = [
         { value: 'center', label: 'Center' },
         { value: 'medicalStaff', label: 'Medical staff' }
