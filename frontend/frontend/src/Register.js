@@ -501,7 +501,7 @@ const Register = ({role,roles}) => {
                         <span className="line">
                             {/*put router link here*/}
                                 
-                            <Link to="/signin">SingIn</Link>
+                            <Link to="/login">SingIn</Link>
                         </span>
                     </p>
                 </section>

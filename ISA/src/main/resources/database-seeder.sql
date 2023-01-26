@@ -20,8 +20,8 @@ INSERT INTO address(id, number, street, city_id) VALUES (4, '25', 'Sekspirova', 
 
 
 --center
-INSERT INTO center(id, description, name, address_id) VALUES (1, 'Ovo je glavni centar za transfuziju', 'Glavni centar za transfuziju', 1);
-INSERT INTO center(id, description, name, address_id) VALUES (2, 'Ovo je sporedni centar za transfuziju', 'Sporedni centar za transfuziju', 2);
+INSERT INTO center(id, average_grade,description, name, address_id) VALUES (1, 8,'Ovo je glavni centar za transfuziju', 'Glavni centar za transfuziju', 1);
+INSERT INTO center(id, average_grade,description, name, address_id) VALUES (2, 6,'Ovo je sporedni centar za transfuziju', 'Sporedni centar za transfuziju', 2);
 
 --donator
 INSERT INTO users(role ,id, activated, company, email, gender, jmbg, name, password,password_changed, phone_number, profession, surname, username, address) VALUES ('Donator',100, true, 'student', 'markovicfilip98@gmail.com', 1, '1111111111111', 'Filip', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', true, '0645306855', 'student', 'Markovic','Filip123', 3);

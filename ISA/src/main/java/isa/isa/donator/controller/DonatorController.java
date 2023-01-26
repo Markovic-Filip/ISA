@@ -11,11 +11,14 @@ import isa.isa.donator.dto.HistorySuccessfulDTO;
 import isa.isa.donator.dto.QuestionnaireDTO;
 import isa.isa.donator.service.HistoryService;
 import isa.isa.donator.service.QuestionnaireService;
+import isa.isa.user.domain.User;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
@@ -85,8 +88,15 @@ public class DonatorController {
     @GetMapping("/History")
     public ResponseEntity<?> getHistory(){
         //dodaj id donatora
+        Long donatorId=null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof User) {
+            donatorId = ((User) principal).getId();
+            // use userId
+        }
 
-        List<HistorySuccessfulDTO> historySuccessfulDTOS = historyService.getHistory(1L);
+        List<HistorySuccessfulDTO> historySuccessfulDTOS = historyService.getHistory(donatorId);
 
         return new ResponseEntity<>(historySuccessfulDTOS, HttpStatus.OK);
     }

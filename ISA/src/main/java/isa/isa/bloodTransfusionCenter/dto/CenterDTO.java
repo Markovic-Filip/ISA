@@ -9,13 +9,15 @@ public class CenterDTO {
     private String name;
 
     private String address;
+    private Double averageGrade;
 
 
 
-    public CenterDTO(String description, String name, String addressDTO) {
+    public CenterDTO(String description, String name, String addressDTO, Double averageGrade) {
         this.description = description;
         this.name = name;
         this.address = addressDTO;
+        this.averageGrade = averageGrade;
     }
 
 
@@ -42,5 +44,21 @@ public class CenterDTO {
 
     public void setAddressDTO(String addressDTO) {
         this.address = addressDTO;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Double getAverageGrade() {
+        return averageGrade;
+    }
+
+    public void setAverageGrade(Double averageGrade) {
+        this.averageGrade = averageGrade;
     }
 }

@@ -74,7 +74,7 @@ const Login = ({role,roles})=>{
                     <h1>You are logged in!</h1>
                     <br />
                     <p>
-                        <a href="#">Go to Home</a>
+                        <Link to="/">Go to Home</Link>
                     </p>
                 </section>
             ) : (
@@ -108,7 +108,7 @@ const Login = ({role,roles})=>{
                  Need an Account?<br />
                 <span className="line">
                     {/*put router link here*/}
-                    <Link to="/">Sign up</Link>
+                    <Link to="/register">Sign up</Link>
                 </span>
             </p>
         </section>

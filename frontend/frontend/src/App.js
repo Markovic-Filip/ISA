@@ -8,6 +8,8 @@ import AuthContext from './context/AuthProvider';
 import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
+import Centers from './Centers';
+import HistoryVisits from './HistoryVisits';
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
            <Route path='/login' element={<Login role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>} />
            <Route path='/register' element={<Register role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>} />
            <Route path='/' element={<Home role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>} />
+           <Route path='/centers' element={<Centers role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           <Route path='/history' element={<HistoryVisits role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
          </Routes>
         )}
       
