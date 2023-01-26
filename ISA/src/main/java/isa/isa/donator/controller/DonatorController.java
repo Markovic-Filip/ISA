@@ -61,8 +61,8 @@ public class DonatorController {
     }
 
     @GetMapping("/available")
-    public ResponseEntity<?> loadAllAvailable() {
-        List<Appointment> appointments = this.appointmentService.getAllAvailable();
+    public ResponseEntity<?> loadAllAvailable(@RequestParam("center") Long centerId) {
+        List<ScheduledAppointment> appointments = this.appointmentService.getAllAvailable(centerId);
 
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
@@ -75,9 +75,9 @@ public class DonatorController {
     }
 
     @PostMapping(value = "/scheduleAppointment", consumes =  MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> scheduleAppointment(@RequestBody Long appointmentId) throws MessagingException, NotFoundException, IOException, WriterException {
-        Long donatorId = 100L;
-        this.appointmentService.scheduleAppointment(appointmentId,donatorId);
+    public ResponseEntity<?> scheduleAppointment(@RequestBody CancelAppointmentRequest request) throws MessagingException, NotFoundException, IOException, WriterException {
+        User u= userRepository.findByUsername(request.getUsername());
+        this.appointmentService.scheduleAppointment(request.getAppointmentId(), u.getId());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -90,8 +90,9 @@ public class DonatorController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping("/qrAppointments")
-    public ResponseEntity<?> getQRAppointments(){
-        //dodaj id donatora
+    public ResponseEntity<?> getQRAppointments(@RequestParam("username") String username){
+        
+        Long donatorId= userRepository.findByUsername(username).getId();
         List<QRAppointmentDTO> appointmentDTOS = appointmentService.getQRAppointments(1L);
 
         return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);

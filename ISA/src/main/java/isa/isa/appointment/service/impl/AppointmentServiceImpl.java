@@ -57,12 +57,12 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> getAllAvailable() {
-        List<Appointment> appointments = new ArrayList<Appointment>();
+    public List<ScheduledAppointment> getAllAvailable(Long centerId) {
+        List<ScheduledAppointment> appointments = new ArrayList<ScheduledAppointment>();
         List<Appointment> allAppointments = appointmentRepository.findAll();
         for (Appointment a : allAppointments) {
-            if (a.getAppointmentState()== AppointmentState.CREATED) {
-                appointments.add(a);
+            if (a.getAppointmentState()== AppointmentState.CREATED && a.getMedicalStaff().getCenter().getId()==centerId) {
+                appointments.add(AppointmentMapper.appointmentToScheduledAppointment(a));
             }
         }
         return appointments;

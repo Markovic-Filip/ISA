@@ -13,7 +13,7 @@ public class AppointmentMapper {
 
     public static QRAppointmentDTO appointmentToQRAppointmentDTO(Appointment appointment){
 
-        QRAppointmentDTO qrAppointmentDTO = new QRAppointmentDTO(appointment.getTimePeriod().getStart(), "C:\\Filip\\Fakultet\\ISA final\\qr"+appointment.getId()+".png");
+        QRAppointmentDTO qrAppointmentDTO = new QRAppointmentDTO(appointment.getTimePeriod().getStart().toString(), "C:\\Filip\\Fakultet\\ISA final\\qr"+appointment.getId()+".png");
 
 
         return qrAppointmentDTO;

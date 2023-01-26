@@ -4,7 +4,7 @@ import isa.isa.user.dto.AddressDTO;
 
 public class CenterDTO {
 
-
+    private Long id;
     private String description;
     private String name;
 
@@ -13,7 +13,8 @@ public class CenterDTO {
 
 
 
-    public CenterDTO(String description, String name, String addressDTO, Double averageGrade) {
+    public CenterDTO(Long id,String description, String name, String addressDTO, Double averageGrade) {
+        this.id = id;
         this.description = description;
         this.name = name;
         this.address = addressDTO;
@@ -60,5 +61,13 @@ public class CenterDTO {
 
     public void setAverageGrade(Double averageGrade) {
         this.averageGrade = averageGrade;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -3,20 +3,20 @@ package isa.isa.appointment.dto;
 import java.util.Date;
 
 public class QRAppointmentDTO {
-    private Date startTime;
+    private String startTime;
     private String qrCodePath;
 
     public QRAppointmentDTO(){};
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public QRAppointmentDTO(Date startTime, String qrCodePath) {
+    public QRAppointmentDTO(String startTime, String qrCodePath) {
         this.startTime = startTime;
         this.qrCodePath = qrCodePath;
     }

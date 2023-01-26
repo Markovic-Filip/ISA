@@ -14,11 +14,13 @@ import Penaltys from './Penaltys';
 import Complaints from './Complaints';
 import UserInformation from './UserInformation';
 import ScheduledAppointments from './ScheduledAppointments';
+import AvailableApp from './AvailableApp';
 
 
 function App() {
     const { auth } = useContext(AuthContext);
     const role = localStorage.getItem("role") || null;
+    const center = localStorage.getItem("center") || null;
 
   
 
@@ -36,6 +38,7 @@ function App() {
            <Route path='/complaint' element={<Complaints role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/myinformation' element={<UserInformation role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/scheduled' element={<ScheduledAppointments role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           <Route path='/available' element={<AvailableApp center={center} role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
          </Routes>
         )}
       

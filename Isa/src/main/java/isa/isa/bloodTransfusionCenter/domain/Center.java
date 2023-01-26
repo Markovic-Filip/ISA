@@ -107,5 +107,9 @@ public class Center {
     public void setAverageGrade(Double averageGrade) {
         this.averageGrade = averageGrade;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
 

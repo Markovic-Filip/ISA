@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface AppointmentService {
     List<ScheduledAppointment> getScheduledAppointmentsForDonator(Long donatorId);
-    List<Appointment> getAllAvailable();
+    List<ScheduledAppointment> getAllAvailable(Long centerId);
     List<QRAppointmentDTO> getQRAppointments(Long donatorId);
 
     void scheduleAppointment(Long appointmentId, Long donatorId) throws NotFoundException, IOException, WriterException, MessagingException;

@@ -32,7 +32,8 @@ const Centers = ()=>{
         },
         {
             Header: 'Button',
-            Cell: ({ row }) => <button>Click me</button>,
+            Cell: ({ row }) => <button onClick={() => handleClick(row.original.id)}>
+              Appointments</button>,
         },
       ]
     
@@ -52,7 +53,18 @@ const Centers = ()=>{
                     console.log(err)
                 })
         }
-      },[data])    
+      },[data])
+      
+      function handleClick(id) {
+        // Find the row in the data array with the matching ID
+        const row = data.find(item => item.id === id);
+    
+        // Access the age from the row
+        const age = row.id;
+        console.log(age);
+        localStorage.setItem("center", age);
+        window.location.href = '/available';
+      }
     
     return (
         <div>
@@ -66,6 +78,7 @@ const Centers = ()=>{
         </div>
             
     )
+
 }
 
 export default Centers
