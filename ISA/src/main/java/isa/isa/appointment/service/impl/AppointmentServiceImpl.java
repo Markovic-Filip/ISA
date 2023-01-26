@@ -8,6 +8,7 @@ import isa.isa.appointment.domain.Appointment;
 import isa.isa.appointment.domain.Report;
 import isa.isa.appointment.domain.enumeration.AppointmentState;
 import isa.isa.appointment.dto.QRAppointmentDTO;
+import isa.isa.appointment.dto.ScheduledAppointment;
 import isa.isa.appointment.mapper.AppointmentMapper;
 import isa.isa.appointment.repository.AppointmentRepository;
 import isa.isa.appointment.repository.ReportRepository;
@@ -42,13 +43,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
     @Override
-    public List<Appointment> getScheduledAppointmentsForDonator(Long donatorId) {
-        List<Appointment> appointments = new ArrayList<Appointment>();
+    public List<ScheduledAppointment> getScheduledAppointmentsForDonator(Long donatorId) {
+        List<ScheduledAppointment> appointments = new ArrayList<ScheduledAppointment>();
         List<Appointment> allAppointments = appointmentRepository.findAll();
         for (Appointment a : allAppointments) {
             if(a.getDonator() != null) {
                 if (a.getDonator().getId() == donatorId && a.getAppointmentState() == AppointmentState.SCHEDULED) {
-                    appointments.add(a);
+                    appointments.add(AppointmentMapper.appointmentToScheduledAppointment(a));
                 }
             }
         }

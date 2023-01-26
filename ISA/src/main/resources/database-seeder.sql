@@ -68,8 +68,8 @@ INSERT INTO blood(id, positive, quantity, type, warehouse_id) VALUES (8,false,20
 
 --history of appointments
 INSERT INTO history_of_appointments(id, donator_id) VALUES (100,100);
-INSERT INTO report(report_id,appointment_id, blood_id, history_id) VALUES (1,16,1,100);
-INSERT INTO report_equipment(report_id, equipment_id) VALUES (1,1);
+INSERT INTO report(report_id,appointment_id, blood_id, history_id) VALUES (100,16,1,100);
+INSERT INTO report_equipment(report_id, equipment_id) VALUES (100,1);
 
 --roles
 INSERT INTO ROLE (name) VALUES ('ROLE_USER');

@@ -13,6 +13,7 @@ import HistoryVisits from './HistoryVisits';
 import Penaltys from './Penaltys';
 import Complaints from './Complaints';
 import UserInformation from './UserInformation';
+import ScheduledAppointments from './ScheduledAppointments';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
            <Route path='/penalty' element={<Penaltys role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/complaint' element={<Complaints role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/myinformation' element={<UserInformation role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           <Route path='/scheduled' element={<ScheduledAppointments role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
          </Routes>
         )}
       

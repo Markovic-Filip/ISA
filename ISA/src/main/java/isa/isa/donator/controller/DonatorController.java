@@ -5,8 +5,10 @@ import com.google.zxing.WriterException;
 import isa.isa.QRCode.email.EmailService;
 import isa.isa.appointment.domain.Appointment;
 import isa.isa.appointment.dto.QRAppointmentDTO;
+import isa.isa.appointment.dto.ScheduledAppointment;
 import isa.isa.appointment.service.AppointmentService;
 import isa.isa.donator.domain.Questionnaire;
+import isa.isa.donator.dto.CancelAppointmentRequest;
 import isa.isa.donator.dto.HistorySuccessfulDTO;
 import isa.isa.donator.dto.QuestionnaireDTO;
 import isa.isa.donator.service.HistoryService;
@@ -50,8 +52,9 @@ public class DonatorController {
     private DonatorRepository donatorRepository;
 
     @GetMapping("/scheduled")
-    public ResponseEntity<?> loadAll() {
-        List<Appointment> appointments = this.appointmentService.getScheduledAppointmentsForDonator(1L);
+    public ResponseEntity<?> loadAll(@RequestParam("username") String username){
+        User u= userRepository.findByUsername(username);
+        List<ScheduledAppointment> appointments = this.appointmentService.getScheduledAppointmentsForDonator(u.getId());
         //List<CenterDTO> centerDTOS = CenterMapper.mapCenterToCenterDTO(centers);
 
         return new ResponseEntity<>(appointments, HttpStatus.OK);
@@ -80,9 +83,9 @@ public class DonatorController {
     }
 
     @PostMapping(value = "/cancelAppointment", consumes =  MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> cancelPatient(@RequestBody Long appointmentId) throws MessagingException, NotFoundException, IOException, WriterException {
-        Long donatorId = 1L;
-        this.appointmentService.cancelAppointment(appointmentId,donatorId);
+    public ResponseEntity<?> cancelPatient(@RequestBody CancelAppointmentRequest request) throws MessagingException, NotFoundException, IOException, WriterException {
+        User u= userRepository.findByUsername(request.getUsername());
+        this.appointmentService.cancelAppointment(request.getAppointmentId(), u.getId());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
