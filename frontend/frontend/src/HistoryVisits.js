@@ -35,9 +35,14 @@ const HistoryVisits = ()=>{
         
     
     useEffect(() => {
-        if (data.length===0) {
+            const token = localStorage.getItem("token");
+            const username = localStorage.getItem("username");
             axios   
-                .get(HISTORY_URL)
+                .get(`/donator/History?username=${username}`, {
+                    headers: {
+                        Authorization: "Bearer " + token
+                    }
+                })
                 .then(res=>{
                     
                     setData(res.data)
@@ -47,12 +52,13 @@ const HistoryVisits = ()=>{
                 .catch(err=>{
                     console.log(err)
                 })
-        }
-      },[data])    
+        
+      },[])    
     
     return (
         <div>
             <NavigationDonator/>
+            <h1>HISTORY OF VISITS</h1>
             <div id="tabela">
                 
                     <Table columns={columns} data={data} />  

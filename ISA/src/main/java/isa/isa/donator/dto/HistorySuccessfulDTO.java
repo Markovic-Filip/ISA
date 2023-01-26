@@ -4,33 +4,33 @@ import java.util.Date;
 
 public class HistorySuccessfulDTO {
 
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
     private String center;
     private String medicalStaff;
 
     public HistorySuccessfulDTO(){};
 
-    public HistorySuccessfulDTO(Date startTime, Date endTime, String center, String medicalStaff) {
+    public HistorySuccessfulDTO(String startTime, String endTime, String center, String medicalStaff) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.center = center;
         this.medicalStaff = medicalStaff;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

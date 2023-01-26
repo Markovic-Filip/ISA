@@ -12,11 +12,13 @@ import isa.isa.donator.dto.QuestionnaireDTO;
 import isa.isa.donator.service.HistoryService;
 import isa.isa.donator.service.QuestionnaireService;
 import isa.isa.user.domain.User;
+import isa.isa.user.repository.UserRepository;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +41,8 @@ public class DonatorController {
     private EmailService emailService;
     @Autowired
     private HistoryService historyService;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/scheduled")
     public ResponseEntity<?> loadAll() {
@@ -84,17 +88,10 @@ public class DonatorController {
 
         return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
     }
-
     @GetMapping("/History")
-    public ResponseEntity<?> getHistory(){
+    public ResponseEntity<?> getHistory(@RequestParam("username") String username){
         //dodaj id donatora
-        Long donatorId=null;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Object principal = authentication.getPrincipal();
-        if (principal instanceof User) {
-            donatorId = ((User) principal).getId();
-            // use userId
-        }
+        Long donatorId= userRepository.findByUsername(username).getId();
 
         List<HistorySuccessfulDTO> historySuccessfulDTOS = historyService.getHistory(donatorId);
 

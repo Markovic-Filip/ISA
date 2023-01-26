@@ -10,7 +10,7 @@ public class HistoryMapper {
     public static HistorySuccessfulDTO historySuccessfulDTO(Appointment appointment){
         String centerName = appointment.getMedicalStaff().getCenter().getName();
         String medicalStaffName = appointment.getMedicalStaff().getName() + " " + appointment.getMedicalStaff().getSurname();
-        HistorySuccessfulDTO historyDTO = new HistorySuccessfulDTO(appointment.getTimePeriod().getStart(), appointment.getTimePeriod().getEnd(),centerName,medicalStaffName);
+        HistorySuccessfulDTO historyDTO = new HistorySuccessfulDTO(appointment.getTimePeriod().getStart().toString(), appointment.getTimePeriod().getEnd().toString(),centerName,medicalStaffName);
         return historyDTO;
     }
 }
