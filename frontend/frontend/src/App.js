@@ -11,6 +11,7 @@ import Home from './Home';
 import Centers from './Centers';
 import HistoryVisits from './HistoryVisits';
 import Penaltys from './Penaltys';
+import Complaints from './Complaints';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
            <Route path='/centers' element={<Centers role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/history' element={<HistoryVisits role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
            <Route path='/penalty' element={<Penaltys role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
+           <Route path='/complaint' element={<Complaints role={role} roles={["SystemAdministrator","CenterAdministrator", "Donator"]}/>}/>
          </Routes>
         )}
       
